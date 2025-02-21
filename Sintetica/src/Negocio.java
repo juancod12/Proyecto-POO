@@ -1,39 +1,56 @@
 import java.util.List;
 
 public class Negocio {
-    public List<CanchaSintetica> NumCanchas;
-    private  Administrador Usuario;
-    public String Direccion;
-    public String Nombre;
-    public Negocio(List<CanchaSintetica> numCanchas, Administrador usuario, String direccion, String nombre) {
-        NumCanchas = numCanchas;
-        Usuario = usuario;
-        Direccion = direccion;
-        Nombre = nombre;
+    // Atributos
+    private List<CanchaSintetica> numCanchas; 
+    private Administrador usuario;         
+    private String direccion;             
+    private String nombre;                 
+
+    // Constructor
+    public Negocio(List<CanchaSintetica> canchas, Administrador usuario, String direccion, String nombre) {
+        this.numCanchas = canchas;
+        this.usuario = usuario;
+        this.direccion = direccion;
+        this.nombre = nombre;
     }
-    public List<CanchaSintetica> getNumCanchas() {
-        return NumCanchas;
+
+    // Getters y Setters
+    public List<CanchaSintetica> getCanchas() { 
+        return numCanchas;
     }
-    public void setNumCanchas(List<CanchaSintetica> numCanchas) {
-        NumCanchas = numCanchas;
+
+    public void setCanchas(List<CanchaSintetica> canchas) { 
+        this.numCanchas = canchas;
     }
+
     public Administrador getUsuario() {
-        return Usuario;
+        return usuario;
     }
+
     public void setUsuario(Administrador usuario) {
-        Usuario = usuario;
+        this.usuario = usuario;
     }
+
     public String getDireccion() {
-        return Direccion;
+        return direccion;
     }
+
     public void setDireccion(String direccion) {
-        Direccion = direccion;
+        this.direccion = direccion;
     }
+
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
+
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
-   
+
+    // Método toString para mostrar los detalles del negocio
+    @Override
+    public String toString() {
+        return "Negocio: nombre=" + nombre + ", direccion=" + direccion + ", usuario=" + usuario.getUsuario();
+    }
 }
