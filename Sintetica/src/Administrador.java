@@ -1,31 +1,49 @@
 public class Administrador {
-    private String Usuario;
-    public int Id;
-    private String Password;
+    //Atributos 
+    private String usuario;
+    private int id;
+    private String password;
+
+    // Constructor
     public Administrador(String usuario, int id, String password) {
-        Usuario = usuario;
-        Id = id;
-        Password = password;
+        this.usuario = usuario;
+        this.id = id;
+        this.password = password;
     }
+
+    // Getters y Setters
     public String getUsuario() {
-        return Usuario;
+        return usuario;
     }
+
     public void setUsuario(String usuario) {
-        Usuario = usuario;
+        this.usuario = usuario;
     }
+
     public int getId() {
-        return Id;
+        return id;
     }
+
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
+
     public String getPassword() {
-        return Password;
+        return password;
     }
+
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
+    // Método toString para mostrar los detalles del administrador
+    @Override
+    public String toString() {
+        return "Administrador: usuario=" + usuario + ", id=" + id + ", password=" + password;
+    }
 
-    
+    //Metodos
+    public void iniciarSesion(){
+        
+    }
 }

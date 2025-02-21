@@ -1,47 +1,65 @@
-public class Reserva {
-    public String Nombre ;
-    public String Fecha;
-    public String Hora;
-    public int IdCancha;
-    public int IdReserva;
-    public Reserva(String nombre, String fecha, String hora, int idCancha, int idReserva) {
-        Nombre = nombre;
-        Fecha = fecha;
-        Hora = hora;
-        IdCancha = idCancha;
-        IdReserva = idReserva;
-    }
-    public String getNombre() {
-        return Nombre;
-    }
-    public void setNombre(String nombre) {
-        Nombre = nombre;
-    }
-    public String getFecha() {
-        return Fecha;
-    }
-    public void setFecha(String fecha) {
-        Fecha = fecha;
-    }
-    public String getHora() {
-        return Hora;
-    }
-    public void setHora(String hora) {
-        Hora = hora;
-    }
-    public int getIdCancha() {
-        return IdCancha;
-    }
-    public void setIdCancha(int idCancha) {
-        IdCancha = idCancha;
-    }
-    public int getIdReserva() {
-        return IdReserva;
-    }
-    public void setIdReserva(int idReserva) {
-        IdReserva = idReserva;
-    }
-    
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-    
-}
+public class Reserva {
+    // Atributos en minúscula
+    private String nombreUsuario;  
+    private LocalDate fecha;       
+    private LocalTime hora;        
+    private int idCancha;          
+    private int idReserva;         
+    // Constructor
+    public Reserva(String nombreUsuario, LocalDate fecha, LocalTime hora, int idCancha, int idReserva) {
+        this.nombreUsuario = nombreUsuario;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.idCancha = idCancha;
+        this.idReserva = idReserva;
+    }
+
+    // Getters y Setters
+    public String getNombreUsuario() { 
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) { 
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
+
+    public int getIdCancha() {
+        return idCancha;
+    }
+
+    public void setIdCancha(int idCancha) {
+        this.idCancha = idCancha;
+    }
+
+    public int getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    // Método toString para mostrar los detalles de la reserva
+    @Override
+    public String toString() {
+        return "Reserva: idReserva=" + idReserva + ", nombreUsuario=" + nombreUsuario + ", fecha=" + fecha + ", hora=" + hora + ", idCancha=" + idCancha;
+    }
