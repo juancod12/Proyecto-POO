@@ -1,26 +1,29 @@
 
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ventana extends Application {
+    Parent root;
     @Override
     public void start(Stage primaryStage) {
-        // Configurar la ventana principal (Stage)
-        primaryStage.setTitle("Mi Aplicación JavaFX");
+        try {
+            root = FXMLLoader.load(getClass().getResource("login.fxml"));    //se cargan los recursos y se pone la ruta del fxml
+            Scene scene =new Scene(root);         //se crea la scena y como parametro le pasamos los recursos
 
-        // Crear un componente simple (Label)
-        Label label = new Label("¡Hola, JavaFX!");
-
-        // Crear una escena y añadir el componente
-        Scene scene = new Scene(label, 300, 200);
-
-        // Asignar la escena al Stage
-        primaryStage.setScene(scene);
-
-        // Mostrar la ventana
-        primaryStage.show();
+            primaryStage.setTitle("SinteticaAAP");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+           e.printStackTrace(); // TODO: handle exception
+        }
+       
+        
     
     }
     public static void main(String[] args) {
