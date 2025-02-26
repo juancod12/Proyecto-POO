@@ -1,3 +1,4 @@
+package model;
 public class Administrador {
     //Atributos 
     private String usuario;
@@ -10,7 +11,9 @@ public class Administrador {
         this.id = id;
         this.password = password;
     }
+    
 
+    
     // Getters y Setters
     public String getUsuario() {
         return usuario;

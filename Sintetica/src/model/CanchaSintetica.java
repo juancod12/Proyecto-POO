@@ -1,3 +1,4 @@
+package model;
 public class CanchaSintetica {
     // Atributos
     private String idCancha;
