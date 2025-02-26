@@ -22,7 +22,6 @@ public class ventana extends Application {
         } catch (IOException e) {
            e.printStackTrace(); // TODO: handle exception
         }
-       
         
     
     }
