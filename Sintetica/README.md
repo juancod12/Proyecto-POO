@@ -1,17 +1,36 @@
+## Description
+Proyecto App de Escritorio para gestionar las reservas de canchas sintética
+
+Herramientas
+-javaFx
+-MySQL
+-HTML
+-CSS
+
 ## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
 ## Folder Structure
+SINTETICA-APP/ │── .vscode/ # Configuración de VS Code │── dumps/ # Archivos temporales y renovables del MySQL │── Sinetica/ # Carpeta principal del código fuente │ ├── lib/ # Librerías externas (.jar) necesarias para el proyecto │ ├── src/ # Código fuente del proyecto │ ├── service/ # Lógica de negocio y servicios │ ├── util/ # Utilidades y funciones auxiliares │── README.md # Documentación del proyecto
 
-The workspace contains two folders by default, where:
+### Description of the folder
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- **`.vscode/`**: senttings.json |--Contiene las direcciones  de  librerias de javaFx y MySQL 
+launch.json|-- archivo de configuración de JavaFX
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- **`dumps/`**: archivos.sql del mySQL
+- **`Sinetica/`**: Es la carpeta raíz del código fuente del proyecto.  
+  - **`lib/`**: Contiene las librerías externas necesarias (archivos `.jar`).  
+  - **`src/`**: Aquí se encuentra el código fuente del proyecto.  
+    - **`controller/`**: Controlador en JavaFX 
+    - **`main/`**: metodos main
+    - **`model/`**: Objetos del proyecto
+    - **`Sqlconexion/`**: Conexion con la base de datos local
+    - **`util/`**: Archivos .fxml y otros recursos 
+    - **`service/`**: 
+- **`README.md`**: Documento de ayuda con información sobre el proyecto.  
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+
+
 
 ## Dependency Management
 
