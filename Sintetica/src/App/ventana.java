@@ -1,6 +1,8 @@
-package main;
+package App;
 import java.io.IOException;
-
+import java.sql.Connection;
+import java.sql.SQLException;
+import Sqlconexion.Conexion;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +27,19 @@ public class ventana extends Application {
         
     
     }
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
+        Connection  conexion =  Conexion.conectar();
+      
+
+        if (conexion != null) {
+            try {
+                // Cerrar la conexión
+                conexion.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
         launch(args);
     }
    

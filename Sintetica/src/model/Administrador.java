@@ -1,52 +1,25 @@
 package model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import Sqlconexion.Conexion;
+import java.sql.SQLException;
+
 public class Administrador {
-    //Atributos 
-    private String usuario;
-    private int id;
-    private String password;
 
-    // Constructor
-    public Administrador(String usuario, int id, String password) {
-        this.usuario = usuario;
-        this.id = id;
-        this.password = password;
-    }
-    
-
-    
-    // Getters y Setters
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    // Método toString para mostrar los detalles del administrador
-    @Override
-    public String toString() {
-        return "Administrador: usuario=" + usuario + ", id=" + id + ", password=" + password;
-    }
-
-    //Metodos
-    public void iniciarSesion(){
+   public static boolean registrarUsuario (String usuario, String clave){
+    String sql = "INSERT INTO administrador (usuario, clave) VALUES (?, ?)";
+    try (Connection conn = Conexion.conectar();
+        PreparedStatement stmt = conn.prepareStatement(sql)){
+            
+            stmt.setString(1, usuario);
+            stmt.setString(2, clave);
+            stmt.executeUpdate();
+            return true;
         
+    } catch (SQLException e) {
+        System.out.println("❌ Error al registrar usuario: " + e.getMessage());
+        return false;
     }
+   }
 }

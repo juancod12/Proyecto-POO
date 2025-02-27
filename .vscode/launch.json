@@ -8,7 +8,7 @@
             "type": "java",
             "name": "ventana",
             "request": "launch",
-            "mainClass": "main.ventana",
+            "mainClass": "App.ventana",
             "projectName": "Sintetica-app_c67b3451",
             "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-sdk-23.0.2\\lib\" --add-modules javafx.controls,javafx.fxml"
         }

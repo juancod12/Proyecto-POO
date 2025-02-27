@@ -17,7 +17,6 @@ SINTETICA-APP/ │── .vscode/ # Configuración de VS Code │── dumps/ #
 - **`.vscode/`**: senttings.json |--Contiene las direcciones  de  librerias de javaFx y MySQL 
 launch.json|-- archivo de configuración de JavaFX
 
-- **`dumps/`**: archivos.sql del mySQL
 - **`Sinetica/`**: Es la carpeta raíz del código fuente del proyecto.  
   - **`lib/`**: Contiene las librerías externas necesarias (archivos `.jar`).  
   - **`src/`**: Aquí se encuentra el código fuente del proyecto.  
