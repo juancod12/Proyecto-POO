@@ -39,9 +39,9 @@ public class ControlScenaBuild  {
     }
 
     // accion del boton donde la se crea una nueva ventana para registrar los datos del usuario
-     @FXML
+    @FXML
     void Registrarse(ActionEvent event ) {
-         try {
+        try {
             
             // Cargar la nueva escena desde un archivo FXML
             Parent registrarVista = FXMLLoader.load(getClass().getResource("/util/gurdarUsuarioAdmin.fxml"));
@@ -76,7 +76,7 @@ public class ControlScenaBuild  {
         System.out.println("usurario: " + us + "contraseña: "+clave);
 
 
-       if (us.isEmpty() || clave.isEmpty()) {
+        if (us.isEmpty() || clave.isEmpty()) {
         System.out.println("❌ Por favor, complete todos los campos.");
         return;
         }
@@ -87,9 +87,46 @@ public class ControlScenaBuild  {
         System.out.println("❌ Error al registrar usuario.");
         }
     
-    
-    
     }
+
+    @FXML
+    void IniciarSesion(ActionEvent event) {
+        //Obtener el nombre de usuario y la contraseña
+        String us = usuario.getText();
+        String clave = password.getText();
+
+        //Verificar si los campos están vacíos
+        if (us.isEmpty() || clave.isEmpty()) {
+            System.out.println("❌ Por favor, complete todos los campos.");
+            return;
+        }
+        //Validar las credenciales contra la base de datos
+        boolean loginExitoso = Administrador.login(us, clave);
+        if (loginExitoso) {
+            System.out.println("✅ Inicio de sesión exitoso.");
+
+            try {
+                // Cargar la nueva escena desde un archivo FXML
+                Parent nuevaVista = FXMLLoader.load(getClass().getResource("/util/iniciarSesion.fxml"));
+                Scene nuevaEscena = new Scene(nuevaVista);
+
+                // Obtener el Stage actual
+                Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                // Reemplazar la escena en la misma ventana
+                stageActual.setScene(nuevaEscena);
+                stageActual.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            //Si las credenciales son incorrectas, mostrar un mensaje de error
+            System.out.println("❌ Usuario o contraseña incorrectos."); 
+        }
+    }
+    //
 
 
 
