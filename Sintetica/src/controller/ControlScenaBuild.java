@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -33,6 +34,9 @@ public class ControlScenaBuild  {
     private Button guardarDatos;
     @FXML
     private URL location;
+    @FXML
+    private Label mensajeError;
+
     @FXML
     void initialize() {
 
@@ -95,9 +99,12 @@ public class ControlScenaBuild  {
         String us = usuario.getText();
         String clave = password.getText();
 
+        mensajeError.setVisible(false);
+
         //Verificar si los campos están vacíos
         if (us.isEmpty() || clave.isEmpty()) {
-            System.out.println("❌ Por favor, complete todos los campos.");
+            mensajeError.setText("❌ Por favor, complete todos los campos.");
+            mensajeError.setVisible(true);
             return;
         }
         //Validar las credenciales contra la base de datos
@@ -123,10 +130,11 @@ public class ControlScenaBuild  {
 
         } else {
             //Si las credenciales son incorrectas, mostrar un mensaje de error
-            System.out.println("❌ Usuario o contraseña incorrectos."); 
+            mensajeError.setText("❌ Usuario o contraseña incorrectos."); // Asignar texto al Label
+            mensajeError.setVisible(true);
         }
     }
-    //
+
 
 
 

@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import SQLconexion.Conexion;
+
+import Sqlconexion.Conexion;
 
 public class Administrador {
 
@@ -40,5 +41,5 @@ public class Administrador {
             System.out.println("❌ Error al intentar iniciar sesión: " + e.getMessage());
             return false;
         }
-    }//
+    }
 }
