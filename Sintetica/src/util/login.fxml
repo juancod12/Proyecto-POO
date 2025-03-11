@@ -27,10 +27,8 @@
          </font>
       </Label>
       <TextField fx:id="usuario" layoutX="172.0" layoutY="191.0" />
-      <PasswordField fx:id="password" layoutX="172.0" layoutY="250.0" prefHeight="25.0" prefWidth="151.0" />
-      <Label fx:id="texusuario" layoutX="175.0" layoutY="174.0" text="Usuario:" />
-      <Label fx:id="texpassword" layoutX="175.0" layoutY="233.0" text="Contraseña:" />
-      <ProgressBar fx:id="progresbar" layoutX="143.0" layoutY="224.0" prefHeight="18.0" prefWidth="207.0" progress="0.0" visible="false" />
-      <Label fx:id="texprogresbar" layoutX="191.0" layoutY="208.0" text="Cargando Datos..." visible="false" />
+      <PasswordField fx:id="password" layoutX="172.0" layoutY="250.0" />
+      <Label layoutX="175.0" layoutY="174.0" text="Usuario:" />
+      <Label layoutX="175.0" layoutY="233.0" text="Contraseña:" />
    </children>
 </AnchorPane>

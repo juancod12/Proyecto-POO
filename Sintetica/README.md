@@ -6,11 +6,12 @@ Herramientas
 -MySQL
 -HTML
 -CSS
+-JavaScript
 
 ## Getting Started
 
 ## Folder Structure
-SINTETICA-APP/ │── .vscode/ # Configuración de VS Code │── dumps/ # Archivos temporales y renovables del MySQL │── Sinetica/ # Carpeta principal del código fuente │ ├── lib/ # Librerías externas (.jar) necesarias para el proyecto │ ├── src/ # Código fuente del proyecto │ ├── service/ # Lógica de negocio y servicios │ ├── util/ # Utilidades y funciones auxiliares │── README.md # Documentación del proyecto
+SINTETICA-APP/ │── .vscode/ # Configuración de VS Code │── dumps/ # Archivos temporales y renovables del MySQL │── Sinetica/ # Carpeta principal del código fuente │ ├── lib/ # Librerías externas (.jar) necesarias para el proyecto │ ├── src/ # Código fuente del proyecto │ ├── service/ # Lógica de negocio y servicios │ ├── util/ # Utilidades y funciones auxiliares │ ├── Web/ # Pagina web │── README.md # Documentación del proyecto
 
 ### Description of the folder
 
@@ -26,7 +27,7 @@ launch.json|-- archivo de configuración de JavaFX
     - **`Sqlconexion/`**: Conexion con la base de datos local
     - **`util/`**: Archivos .fxml y otros recursos 
     - **`service/`**: 
-- **`README.md`**: Documento de ayuda con información sobre el proyecto. .. 
+- **`README.md`**: Documento de ayuda con información sobre el proyecto.  
 
 
 
