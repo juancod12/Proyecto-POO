@@ -20,7 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
 
 
 import javafx.stage.Stage;
@@ -37,7 +36,8 @@ public class ControlScenaBuild  {
     private TextField usuario;
     @FXML
     private PasswordField password;
-
+    @FXML
+    private Label mensajeError;
 
     @FXML
     private Label texusuario;
@@ -80,7 +80,7 @@ public class ControlScenaBuild  {
             e.printStackTrace();
         }
 
-
+ 
     
 
 
@@ -127,13 +127,11 @@ public class ControlScenaBuild  {
         
         //Validar las credenciales contra la base de datos
         boolean loginExitoso = Administrador.login(us, clave);
-        if (loginExitoso) {
-            System.out.println("✅ Inicio de sesión exitoso.");
-            //ocultar los label y poner la barra de progreso
-            
 
-           
-                usuario.setVisible(false);
+
+
+        if (loginExitoso) {
+            usuario.setVisible(false);
                 usuario.setManaged(false);
 
                 password.setVisible(false);
@@ -147,8 +145,10 @@ public class ControlScenaBuild  {
 
                 texprogresbar.setVisible(true);
                 progresbar.setVisible(true);
+
+            System.out.println("Inicio de sesión exitoso.");
+            //ocultar los label y poner la barra de progreso
             
-                
                 Timeline timeline = new Timeline( 
                     new KeyFrame(Duration.seconds(1), e -> progresbar.setProgress(0.3)),
                     new KeyFrame(Duration.seconds(2), e -> progresbar.setProgress(0.6)),
@@ -158,6 +158,7 @@ public class ControlScenaBuild  {
                     );
                     timeline.setCycleCount(1); // Ejecutar una sola vez
                     timeline.play();
+
                 // Definir qué hacer cuando la animación termine
                 timeline.setOnFinished(e -> {
                         try {
