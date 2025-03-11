@@ -26,7 +26,7 @@ launch.json|-- archivo de configuración de JavaFX
     - **`Sqlconexion/`**: Conexion con la base de datos local
     - **`util/`**: Archivos .fxml y otros recursos 
     - **`service/`**: 
-- **`README.md`**: Documento de ayuda con información sobre el proyecto.  
+- **`README.md`**: Documento de ayuda con información sobre el proyecto. .. 
 
 
 
