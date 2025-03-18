@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 
 
@@ -28,63 +29,71 @@ public class ControlScenaBuild  {
     
     @FXML
     private ResourceBundle resources;
+    /*Boton de registrar  */
     @FXML
     private Button registrarse;
     
-    
+    /*ususarios (texto, field)  declaracion */
     @FXML
     private TextField usuario;
     @FXML
-    private PasswordField password;
-    @FXML
-    private Label mensajeError;
-
-    @FXML
     private Label texusuario;
+    /*Contrasena (texto, field)  declaracion */
+    @FXML
+    private PasswordField password;
     @FXML
     private Label texpassword;
     
+    /*Label del mensaje error  declaracion */
+    @FXML
+    private Label mensajeError;
+    
+     /*Barra de progreso (texto,progressbar)  declaracion */
     @FXML
     private Label texprogresbar;
     @FXML
     private ProgressBar progresbar;
 
+    /*botton de guardar datos  */
     @FXML
     private Button guardarDatos;
+     
+    /*lin de de localizacion del archivo */
     @FXML
     private URL location;
-    @FXML
-    void initialize() {
-        
-        
-    }
 
-    // accion del boton donde la se crea una nueva ventana para registrar los datos del usuario
-    @FXML
-    void Registrarse(ActionEvent event ) {
-        try {
-            
-            // Cargar la nueva escena desde un archivo FXML
-            Parent registrarVista = FXMLLoader.load(getClass().getResource("/util/gurdarUsuarioAdmin.fxml"));
-            System.out.println(getClass().getResource("/util/gurdarUsuarioAdmin.fxml"));
-            Scene nuevaEscena = new Scene(registrarVista);
-
-            // Obtener el Stage actual
-            Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Reemplazar la escena en la misma ventana
-            stageActual.setScene(nuevaEscena);
-            stageActual.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
- 
     
 
 
+
+
+
+
+
+
+
+
+
+
+    /* metodo iniciar*/
+    @FXML 
+    void initialize() {  
+        
+    } 
+
+    // Ventana de Registro
+    @FXML
+    void Registrarse(ActionEvent event ) {
+        
+        String url="/util/gurdarUsuarioAdmin.fxml";
+        cargar load = new cargar();
+        load.cargarRecursos( event,  url); 
+        
+        
+            
     }
+
+
     //accion del botton para guardar los datos en la base de datos
     @FXML
     void GuardarDatos(ActionEvent event){
@@ -109,7 +118,7 @@ public class ControlScenaBuild  {
         }
     
     }
-
+     /*Pantalla de incion, accion de loggearse y pasar a la ventana principal */
     @FXML
     void IniciarSesion(ActionEvent event) {
 
@@ -131,7 +140,7 @@ public class ControlScenaBuild  {
 
 
         if (loginExitoso) {
-            usuario.setVisible(false);
+                 usuario.setVisible(false);
                 usuario.setManaged(false);
 
                 password.setVisible(false);
@@ -161,27 +170,17 @@ public class ControlScenaBuild  {
 
                 // Definir qué hacer cuando la animación termine
                 timeline.setOnFinished(e -> {
+                        
                         try {
-                            try {
-                                Thread.sleep(1000);  // Espera 5 segundos (5000 milisegundos)
-                            } catch (InterruptedException es) {
-                                es.printStackTrace();
-                            }
-                        // Cargar la nueva escena desde un archivo FXML
-                        Parent nuevaVista = FXMLLoader.load(getClass().getResource("/util/iniciarSesion.fxml"));
-                        Scene nuevaEscena = new Scene(nuevaVista);
-
-                        // Obtener el Stage actual
-                        Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                        // Reemplazar la escena en la misma ventana
-                        stageActual.setScene(nuevaEscena);
-                        stageActual.show();
-
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
+                            Thread.sleep(1000);  // Espera 5 segundos (5000 milisegundos)
+                        } catch (InterruptedException es) {
+                            es.printStackTrace();
                         }
-                });    
+                       });    
+
+                       String url="/util/iniciarSesion.fxml";
+                       cargar load = new cargar();
+                       load.cargarRecursos( event,  url);
 
         } else {
             //Si las credenciales son incorrectas, mostrar un mensaje de error
@@ -189,11 +188,10 @@ public class ControlScenaBuild  {
             mensajeError.setVisible(true);
         }
     }
+    
 
 
-
-
-}
+}//cierre final
 
 
 

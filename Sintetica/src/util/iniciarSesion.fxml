@@ -4,16 +4,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.canchaController">
    <children>
       <VBox layoutY="103.0" prefHeight="496.0" prefWidth="238.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="202.0" prefWidth="277.0" text="Canchas" />
+            <Button fx:id="canchas" mnemonicParsing="false" onAction="#Canchas" prefHeight="202.0" prefWidth="277.0" text="Canchas" />
             <Button mnemonicParsing="false" prefHeight="203.0" prefWidth="256.0" text="Reservas" />
             <Button mnemonicParsing="false" prefHeight="203.0" prefWidth="275.0" text="Historial" />
          </children>
@@ -24,12 +25,25 @@
             <Blend mode="RED" />
          </effect>
       </Separator>
-      <ListView layoutX="241.0" layoutY="57.0" prefHeight="543.0" prefWidth="659.0" />
-      <Button layoutX="263.0" layoutY="16.0" mnemonicParsing="false" text="Crear Cancha nueva" />
-      <Separator layoutX="240.0" layoutY="45.0" prefHeight="21.0" prefWidth="659.0">
+      <ListView fx:id="buttoNew" layoutX="242.0" layoutY="59.0" prefHeight="543.0" prefWidth="659.0" />
+      <Button fx:id="ButtoNew" layoutX="263.0" layoutY="16.0" mnemonicParsing="false" onAction="#CrearCancha" text="Crear Cancha nueva" visible="false" />
+      <Separator fx:id="CrossedLine" layoutX="240.0" layoutY="45.0" prefHeight="21.0" prefWidth="659.0">
          <effect>
             <Blend mode="RED" />
          </effect>
       </Separator>
+      <Pane fx:id="penelNewCancha" layoutX="248.0" layoutY="59.0" prefHeight="543.0" prefWidth="646.0" visible="false">
+         <children>
+            <Label layoutX="122.0" layoutY="24.0" prefHeight="18.0" prefWidth="205.0" text="Ingrese loa Datos de la cancha" />
+            <Label layoutX="51.0" layoutY="87.0" text=" Tipo de cancha(Deporte):" />
+            <TextField fx:id="txTipo" layoutX="52.0" layoutY="120.0" prefHeight="30.0" prefWidth="166.0" promptText="ejemplo:  Futbol 7" />
+            <TextField fx:id="txPrecio" layoutX="48.0" layoutY="259.0" prefHeight="30.0" prefWidth="173.0" promptText="\$0.00" />
+            <Label layoutX="52.0" layoutY="219.0" prefHeight="18.0" prefWidth="166.0" text="Precio por hora:" />
+            <Button fx:id="buttonAgregarCancha" layoutX="58.0" layoutY="365.0" mnemonicParsing="false" onAction="#GuardarCancha" text="Agregar Cancha" />
+            <Label fx:id="TxExito" layoutX="31.0" layoutY="323.0" text="Cancha guardada exitoamente" textFill="#24ee4d" visible="false" />
+            <Button fx:id="Salir" layoutX="578.0" layoutY="9.0" mnemonicParsing="false" onAction="#CerrarCrear" text="X" />
+         </children>
+      </Pane>
+      <ListView fx:id="listaCanchas" layoutX="247.0" layoutY="61.0" prefHeight="532.0" prefWidth="640.0" />
    </children>
 </AnchorPane>

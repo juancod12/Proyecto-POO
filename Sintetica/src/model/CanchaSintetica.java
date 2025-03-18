@@ -1,55 +1,97 @@
 package model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import Sqlconexion.Conexion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class CanchaSintetica {
-    // Atributos
-    private String idCancha;
-    private String numeroDeCancha;
-    private String estado;
+    private String tipo;
+    private String estado; 
     private int precio;
+    private int id;
 
-    // Constructor
-    public CanchaSintetica(String idCancha, String numeroDeCancha, String estado, int precio) {
-        this.idCancha = idCancha;
-        this.numeroDeCancha = numeroDeCancha;
-        this.estado = estado;
+public CanchaSintetica(String tipo, int precio) {
+        this.tipo = tipo;
         this.precio = precio;
     }
 
-    // Getters y Setters
-    public String getIdCancha() {
-        return idCancha;
-    }
-
-    public void setIdCancha(String idCancha) {
-        this.idCancha = idCancha;
-    }
-
-    public String getNumeroDeCancha() {
-        return numeroDeCancha;
-    }
-
-    public void setNumeroDeCancha(String numeroDeCancha) {
-        this.numeroDeCancha = numeroDeCancha;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public int getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(int precio) {
+ public CanchaSintetica(int id, String tipo,String estado, int precio) {
+        this.tipo = tipo;
         this.precio = precio;
+        this.estado = estado; 
+        this.id= id;
     }
 
-    // Método toString para mostrar los detalles de la cancha
-    @Override
-    public String toString() {
-        return "CanchaSintetica: idCancha=" + idCancha + ", numeroDeCancha=" + numeroDeCancha + ", estado=" + estado + ", precio=" + precio;
+
+
+@Override
+public String toString() {
+    return  "     " + id + "   "+ tipo + "    " + estado + "      " + precio  ;
+}
+
+public String getTipo() {
+    return tipo;
+}
+
+public int getPrecio() {
+    return precio;
+}
+public String getEstado() {
+    return estado;
+}
+   
+
+
+public static boolean RegistrarCancha(CanchaSintetica cancha){
+    String tipo= cancha.getTipo();
+    int precio= cancha.getPrecio();
+    boolean estado =false;
+
+
+    String sql = "INSERT INTO canchas (tipo,estado, precio) VALUES (?, ?, ?)";
+        try (Connection conn = Conexion.conectar();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, tipo);
+            stmt.setBoolean(2, estado);
+            stmt.setInt(3, precio);
+            stmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("❌ Error al registrar cancha: " + e.getMessage());
+            return false;
+        }
     }
+
+    public static ObservableList<CanchaSintetica> obtenerCanchas() {
+        ObservableList<CanchaSintetica> canchas = FXCollections.observableArrayList();
+        String query = "SELECT id, tipo, estado, precio FROM canchas";
+
+        try (Connection conn = Conexion.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String tipo = rs.getString("tipo");
+                String estado = rs.getString("estado");
+                int precio = rs.getInt("precio");
+
+                canchas.add(new CanchaSintetica( id, tipo, estado, precio));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return canchas;
+    }
+
+
+
+
 }
