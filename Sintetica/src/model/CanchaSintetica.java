@@ -50,7 +50,7 @@ public String getEstado() {
 public static boolean RegistrarCancha(CanchaSintetica cancha){
     String tipo= cancha.getTipo();
     int precio= cancha.getPrecio();
-    boolean estado =false;
+    Boolean estado =false;
 
 
     String sql = "INSERT INTO canchas (tipo,estado, precio) VALUES (?, ?, ?)";
@@ -68,6 +68,26 @@ public static boolean RegistrarCancha(CanchaSintetica cancha){
             return false;
         }
     }
+    public static boolean EliminarCancha(CanchaSintetica cancha){
+        String tipo= cancha.getTipo();
+        int precio= cancha.getPrecio();
+        
+    
+    
+        String sql = "DELETE FROM canchas WHERE tipo = ?  AND precio = ?";
+            try (Connection conn = Conexion.conectar();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+    
+                stmt.setString(1, tipo);
+                stmt.setInt(2, precio);
+                stmt.executeUpdate();
+                return true;
+    
+            } catch (SQLException e) {
+                System.out.println("❌ Error al eliminar la cancha: " + e.getMessage());
+                return false;
+            }
+        }
 
     public static ObservableList<CanchaSintetica> obtenerCanchas() {
         ObservableList<CanchaSintetica> canchas = FXCollections.observableArrayList();
@@ -82,7 +102,12 @@ public static boolean RegistrarCancha(CanchaSintetica cancha){
                 String tipo = rs.getString("tipo");
                 String estado = rs.getString("estado");
                 int precio = rs.getInt("precio");
-
+                System.out.println(estado);
+                if(estado.equals("0")){
+                    estado= "Disponible";
+                }else{
+                    estado= "Ocupada";
+                }
                 canchas.add(new CanchaSintetica( id, tipo, estado, precio));
             }
         } catch (SQLException e) {

@@ -159,7 +159,6 @@ public class ControlScenaBuild  {
             //ocultar los label y poner la barra de progreso
             
                 Timeline timeline = new Timeline( 
-                    new KeyFrame(Duration.seconds(1), e -> progresbar.setProgress(0.3)),
                     new KeyFrame(Duration.seconds(2), e -> progresbar.setProgress(0.6)),
                     new KeyFrame(Duration.seconds(3), e -> progresbar.setProgress(1.0)),
                     new KeyFrame(Duration.seconds(4), e -> progresbar.setProgress(1.0))
@@ -173,14 +172,14 @@ public class ControlScenaBuild  {
                         
                         try {
                             Thread.sleep(1000);  // Espera 5 segundos (5000 milisegundos)
+                            String url="/util/iniciarSesion.fxml";
+                            cargar load = new cargar();
+                            load.cargarRecursos( event,  url);
                         } catch (InterruptedException es) {
                             es.printStackTrace();
                         }
                        });    
 
-                       String url="/util/iniciarSesion.fxml";
-                       cargar load = new cargar();
-                       load.cargarRecursos( event,  url);
 
         } else {
             //Si las credenciales son incorrectas, mostrar un mensaje de error
