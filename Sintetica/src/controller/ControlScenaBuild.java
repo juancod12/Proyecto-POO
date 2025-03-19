@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.scene.Node;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +22,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
-
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Administrador;
 public class ControlScenaBuild  {
@@ -61,25 +63,17 @@ public class ControlScenaBuild  {
     /*lin de de localizacion del archivo */
     @FXML
     private URL location;
-
     
-
-
-
-
-
-
-
-
-
-
 
 
     /* metodo iniciar*/
     @FXML 
-    void initialize() {  
-        
+    void initialize() {
+       
+       
     } 
+  
+    
 
     // Ventana de Registro
     @FXML
@@ -98,8 +92,7 @@ public class ControlScenaBuild  {
     @FXML
     void GuardarDatos(ActionEvent event){
 
-        
-
+       
         String us = usuario.getText();
         String clave = password.getText();
 
@@ -140,20 +133,21 @@ public class ControlScenaBuild  {
 
 
         if (loginExitoso) {
-                 usuario.setVisible(false);
-                usuario.setManaged(false);
+            
+            usuario.setVisible(false);
+            usuario.setManaged(false);
 
-                password.setVisible(false);
-                password.setManaged(false);
+            password.setVisible(false);
+            password.setManaged(false);
 
-                texpassword.setManaged(false);
-                texpassword.setVisible(false); 
+            texpassword.setManaged(false);
+            texpassword.setVisible(false); 
 
-                texusuario.setManaged(false);
-                texusuario.setVisible(false); 
+            texusuario.setManaged(false);
+            texusuario.setVisible(false); 
 
-                texprogresbar.setVisible(true);
-                progresbar.setVisible(true);
+            texprogresbar.setVisible(true);
+            progresbar.setVisible(true);
 
             System.out.println("Inicio de sesión exitoso.");
             //ocultar los label y poner la barra de progreso
@@ -186,6 +180,7 @@ public class ControlScenaBuild  {
             mensajeError.setText("❌ Usuario o contraseña incorrectos."); // Asignar texto al Label
             mensajeError.setVisible(true);
         }
+        
     }
     
 

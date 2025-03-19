@@ -8,18 +8,10 @@
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.canchaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.canchaController">
    <children>
-      <VBox layoutY="103.0" prefHeight="496.0" prefWidth="238.0">
-         <children>
-            <Button fx:id="canchas" mnemonicParsing="false" onAction="#Canchas" prefHeight="202.0" prefWidth="277.0" text="Canchas" />
-            <Button mnemonicParsing="false" prefHeight="203.0" prefWidth="256.0" text="Reservas" />
-            <Button mnemonicParsing="false" prefHeight="203.0" prefWidth="275.0" text="Historial" />
-         </children>
-      </VBox>
-      <Label layoutX="59.0" layoutY="30.0" prefHeight="58.0" prefWidth="118.0" text="Panel de Opciones" />
+      <Label layoutX="50.0" layoutY="2.0" prefHeight="58.0" prefWidth="118.0" text="Panel de Opciones" />
       <Separator layoutX="234.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="14.0">
          <effect>
             <Blend mode="RED" />
@@ -27,7 +19,7 @@
       </Separator>
       <ListView fx:id="buttoNew" layoutX="242.0" layoutY="59.0" prefHeight="543.0" prefWidth="659.0" />
       <Button fx:id="ButtoNew" layoutX="263.0" layoutY="16.0" mnemonicParsing="false" onAction="#CrearCancha" text="Crear Cancha nueva" visible="false" />
-      <Separator fx:id="CrossedLine" layoutX="240.0" layoutY="45.0" prefHeight="21.0" prefWidth="659.0">
+      <Separator fx:id="CrossedLine" layoutY="45.0" prefHeight="21.0" prefWidth="899.0">
          <effect>
             <Blend mode="RED" />
          </effect>
@@ -44,6 +36,13 @@
             <Button fx:id="Salir" layoutX="578.0" layoutY="9.0" mnemonicParsing="false" onAction="#CerrarCrear" text="X" />
          </children>
       </Pane>
-      <ListView fx:id="listaCanchas" layoutX="240.0" layoutY="61.0" prefHeight="543.0" prefWidth="665.0" />
+      <ListView fx:id="listaCanchas" layoutX="240.0" layoutY="55.0" prefHeight="543.0" prefWidth="665.0" />
+      <Pane fx:id="panelOpciones" layoutY="54.0" prefHeight="549.0" prefWidth="240.0" style="-fx-background-image: url('/util/fondoBarra.png'); -fx-background-size: cover; -fx-background-position: center;">
+         <children>
+            <Button layoutY="116.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="240.0" text="Historial" />
+            <Button layoutY="58.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="240.0" text="Reservas" />
+            <Button fx:id="canchas" mnemonicParsing="false" onAction="#Canchas" prefHeight="58.0" prefWidth="240.0" text="Canchas" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
