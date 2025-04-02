@@ -1,67 +1,72 @@
 package model;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.sql.Date;
+import java.sql.Time;
+
 
 public class Reserva {
     // Atributos en minúscula
     private String nombreUsuario;  
-    private LocalDate fecha;       
-    private LocalTime hora;        
-    private int idCancha;          
-    private int idReserva;         
+    private Date fecha;       
+    private Time hora;        
+    private int id;       
+    private String cancha;    
+    private String telefono;         
+    private String correo;         
     // Constructor
-    public Reserva(String nombreUsuario, LocalDate fecha, LocalTime hora, int idCancha, int idReserva) {
+    public Reserva(String nombreUsuario, Date fecha, Time hora, int id, String cancha, String telefono, String correo) {
         this.nombreUsuario = nombreUsuario;
         this.fecha = fecha;
         this.hora = hora;
-        this.idCancha = idCancha;
-        this.idReserva = idReserva;
+        this.id = id;
+        this.cancha = cancha;
+        this.telefono = telefono;
+        this.correo = correo;
     }
 
-    // Getters y Setters
-    public String getNombreUsuario() { 
+
+    
+    @Override
+    public String toString() {
+        return "Reserva [nombreUsuario=" + nombreUsuario + ", fecha=" + fecha + ", hora=" + hora + ", id=" + id
+                + ", cancha=" + cancha + ", telefono=" + telefono + ", coreo=" + correo + "]";
+    }
+
+
+
+
+    public String getNombreUsuario() {
         return nombreUsuario;
     }
 
-    public void setNombreUsuario(String nombreUsuario) { 
-        this.nombreUsuario = nombreUsuario;
-    }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
 
-    public LocalTime getHora() {
+    public Time getHora() {
         return hora;
     }
 
-    public void setHora(LocalTime hora) {
-        this.hora = hora;
+
+    public int getId() {
+        return id;
     }
 
-    public int getIdCancha() {
-        return idCancha;
+
+
+    public String getCancha() {
+        return cancha;
     }
 
-    public void setIdCancha(int idCancha) {
-        this.idCancha = idCancha;
+
+    public String getTelefono() {
+        return telefono;
     }
 
-    public int getIdReserva() {
-        return idReserva;
-    }
 
-    public void setIdReserva(int idReserva) {
-        this.idReserva = idReserva;
+    public String getCorreo() {
+        return correo;
     }
-
-    // Método toString para mostrar los detalles de la reserva
-    @Override
-    public String toString() {
-        return "Reserva: idReserva=" + idReserva + ", nombreUsuario=" + nombreUsuario + ", fecha=" + fecha + ", hora=" + hora + ", idCancha=" + idCancha;
-    }
+    
 }
